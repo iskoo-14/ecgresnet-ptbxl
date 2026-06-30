@@ -15,7 +15,7 @@ A lightweight 1D residual CNN (**ECGResNet**) for multi-label classification of 
 
 ![Deep Learning Pipeline](assets/dl-pipeline.png)
 
-**Preprocessing module:** median filter → band-pass filter (0.5–40 Hz) → train/val/test split → z-standardization → segmentation.
+**Preprocessing module:** band-pass filter (0.5–40 Hz) → train/val/test split → z-standardization → segmentation.
 
 ## Model Architecture
 
