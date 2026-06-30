@@ -31,8 +31,6 @@ ECGResNet follows a stem → residual blocks → classification head structure, 
 
 Model optimization followed a sequential three-phase ablation structure, with the best-performing configuration from each phase carried forward to the next.
 
-![Model Optimization Flow](assets/model-optimization.png)
-
 1. **Residual architecture depth** — 4 residual blocks vs. 2 residual blocks
 2. **Loss functions** — BCE vs. Weighted BCE vs. Focal Loss
 3. **Activation functions** — ReLU vs. Mish vs. GELU
