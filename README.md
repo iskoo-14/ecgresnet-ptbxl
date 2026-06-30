@@ -64,31 +64,15 @@ HYP consistently emerged as the hardest class to classify, driven by class imbal
 ```
 .
 ├── assets/                  # Pipeline, architecture, and GradCAM diagrams
-├── src/
-│   ├── models/               # ECGResNet, ResBlock1D
-│   ├── datasets/              # PTB-XL loading and preprocessing
-│   ├── training/               # Training loop, ablation configs
-│   └── evaluation/
-│       ├── metrics.py           # AUC, AUPR, F-score, Youden Index
-│       └── gradcam.py            # GradCAM1D implementation
-├── data/                     # Instructions for downloading PTB-XL (not included)
-├── results/                  # Ablation tables and figures
+├── data/                    # PTB-XL dataset (not included, see download instructions)
+├── models/                  # Saved/trained model checkpoints
+├── notebooks/                # Preprocessing, training, ablation, and GradCAM notebooks
+├── outputs/                  # Generated results, figures, and exported tables
 ├── requirements.txt
 └── README.md
 ```
 
+
 ## Setup
-
-```bash
-pip install -r requirements.txt
-```
-
 The dataset is downloaded separately (see `data/README.md`) and is not included in this repository due to size.
 
-## Team
-
-- Ismail Aljosevic
-- Diego Polito
-- Alessandro Lkikm
-
-*Artificial Intelligence in Medicine — Politecnico di Torino*
