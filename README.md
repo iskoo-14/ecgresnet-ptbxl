@@ -15,7 +15,7 @@ A lightweight 1D residual CNN (**ECGResNet**) for multi-label classification of 
 
 ![Deep Learning Pipeline](assets/dl-pipeline.png)
 
-**Preprocessing module:** band-pass filter (0.5–40 Hz) → train/val/test split → z-standardization → segmentation.
+**Preprocessing module:** median filter → band-pass filter (0.5–40 Hz) → train/val/test split → z-standardization → segmentation.
 
 ## Model Architecture
 
@@ -29,7 +29,7 @@ ECGResNet follows a stem → residual blocks → classification head structure, 
 
 ## Model Optimization
 
-Model optimization followed a sequential three-phase ablation structure, with the best-performing configuration from each phase carried forward to the next.
+Model optimization followed a sequential three-phase ablation structure, with the best-performing configuration from each phase carried forward to the next:
 
 1. **Residual architecture depth** — 4 residual blocks vs. 2 residual blocks
 2. **Loss functions** — BCE vs. Weighted BCE vs. Focal Loss
@@ -54,13 +54,16 @@ HYP consistently emerged as the hardest class to classify, driven by class imbal
 
 ## Explainability
 
-GradCAM1D was used to visualize which regions of the ECG waveform drive the model's class predictions, helping identify the morphological features behind both correct classifications and misclassifications.
+**GradCAM1D** was used to visualize which regions of the ECG waveform drive the model's class predictions, helping identify the morphological features behind both correct classifications and misclassifications. Segment-level heatmaps are stitched back together via overlapping-window aggregation to produce a single record-level explanation.
+
+![GradCAM Example](assets/gradcam.png)
+*Example: stitched GradCAM heatmap for the final model on patient 34, predicted class NORM (probability 0.91), shown across leads 0, 3, 7, and 11. Warmer regions indicate higher relative class gradient importance.*
 
 ## Project Structure
 
 ```
 .
-├── assets/                  # Architecture and pipeline diagrams
+├── assets/                  # Pipeline, architecture, and GradCAM diagrams
 ├── src/
 │   ├── models/               # ECGResNet, ResBlock1D
 │   ├── datasets/              # PTB-XL loading and preprocessing
@@ -82,3 +85,10 @@ pip install -r requirements.txt
 
 The dataset is downloaded separately (see `data/README.md`) and is not included in this repository due to size.
 
+## Team
+
+- Ismail Aljosevic
+- Diego Polito
+- Alessandro Lkikm
+
+*Artificial Intelligence in Medicine — Politecnico di Torino*
