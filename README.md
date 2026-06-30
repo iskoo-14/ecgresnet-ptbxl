@@ -82,10 +82,3 @@ pip install -r requirements.txt
 
 The dataset is downloaded separately (see `data/README.md`) and is not included in this repository due to size.
 
-## Team
-
-- Ismail Aljosevic
-- Diego Polito
-- Alessandro Lkikm
-
-*Artificial Intelligence in Medicine — Politecnico di Torino*
